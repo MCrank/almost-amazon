@@ -1,8 +1,8 @@
-import { loadCards, attachEvents } from './components/store.js';
+import { loadCards, attachStoreEvents } from './components/store.js';
 
 const initializeApp = () => {
   loadCards();
-  attachEvents();
+  attachStoreEvents();
 };
 
 initializeApp();

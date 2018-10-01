@@ -1,5 +1,6 @@
 import { printToDom } from '../helpers/util.js';
 import { addToCart } from './cart.js';
+
 // Object to hold book details
 const storeBooks = [
   {
@@ -18,7 +19,7 @@ const storeBooks = [
       "The Underdark. A place of brooding darkness, where no shadows exist, and where Drizzt Do'Urden does not wish to go. The noble dark elf must return there, though, he must go back to find his friends in the gnome city of Blingdenstone, and on to Menzoberranzan, the city of drow. Only then can Drizzt discern what perils might reach out from that dark place to threaten his friends in Mithril Hall. ",
     price: '21.95',
     imgUrl: '../../img/starless.jpg',
-    isDiscounted: false
+    isDiscounted: true
   },
   {
     name: 'Siege of Darkness: Legend of Drizzt: Legacy of the Drow, Book 3',
@@ -27,7 +28,7 @@ const storeBooks = [
       "Rising up from the black depths of the Underdark, the drow once more meet the dwarves of Mithral Hall. Bruenor Battlehammer, with Drizzt at his side, won't go down without a fight - but they'll have to fight without Wulfgar or Catti-brie at their sides.",
     price: '21.95',
     imgUrl: '../../img/darkness.jpg',
-    isDiscounted: false
+    isDiscounted: true
   },
   {
     name: 'Passage to Dawn: Legend of Drizzt: Legacy of the Drow, Book 4',
@@ -36,7 +37,7 @@ const storeBooks = [
       "Drizzt and Catti-brie have been away from Mithral Hall for six long years, but the pain of a lost companion still weighs heavily on their strong shoulders. Chasing pirates aboard Captain Deudermont's Sea Sprite is enough to draw their attention away from their grief. Then a mysterious castaway on an uncharted island sends them back to the very source of their pain, and into the clutches of a demon with vengeance on his mind.",
     price: '21.95',
     imgUrl: '../../img/passage.jpg',
-    isDiscounted: false
+    isDiscounted: true
   }
 ];
 
@@ -63,27 +64,28 @@ const loadCards = () => {
   printToDom(newString, 'books');
 };
 
-const getBookPrice = (bookName) => {
-  // storeBooks.find(bookName => bookName.name {
-
-  // })
-  return storeBooks.price;
-};
-
-const getBookIsDiscounted = (bookName) => {
-  return storeBooks.isDiscounted;
+// Get Method for the selected book
+const getBookInfo = (bookName) => {
+  const bookIndex = storeBooks.findIndex((book) => book.name === bookName);
+  if (bookIndex === 'Undefined') {
+    alert(`Could not find a book named ${bookName}`);
+  }
+  return storeBooks[bookIndex];
 };
 
 const purchaseButtonEvents = () => {
   const storeBooks = document.getElementsByClassName('purchase-btn');
   for (let i = 0; i < storeBooks.length; i++) {
     const element = storeBooks[i];
-    element.addEventListener('click', addToCart);
+    element.addEventListener('click', () => {
+      const selectedBookName = event.target.parentElement.previousElementSibling.firstElementChild.innerHTML;
+      addToCart(selectedBookName);
+    });
   }
 };
 
-const attachEvents = () => {
+const attachStoreEvents = () => {
   purchaseButtonEvents();
 };
 
-export { loadCards, attachEvents, getBookPrice, getBookIsDiscounted };
+export { loadCards, attachStoreEvents, getBookInfo };
