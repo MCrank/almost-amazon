@@ -1,3 +1,5 @@
+import { printToDom } from '../helpers/util.js';
+import { addToCart } from './cart.js';
 // Object to hold book details
 const storeBooks = [
   {
@@ -37,3 +39,51 @@ const storeBooks = [
     isDiscounted: false
   }
 ];
+
+const loadCards = () => {
+  let newString = '';
+  for (let i = 0; i < storeBooks.length; i++) {
+    const element = storeBooks[i];
+    newString += `<div class="card mx-2 shadow text-white bg-secondary" style="width: 23rem;">
+        <img class="card-img-top" src="${element.imgUrl}" alt="${element.name}">
+        <div class="card-body">
+            <h5 class="book-name card-title">${element.name}</h5>
+            <h6 class="card-text">${element.author}</h6>
+            <p class="card-text">${element.description}</p>
+        </div>
+        <div class="card-footer bg-light text-dark">
+            <h5 class="align-middle" style="display:inline">Price:  <span class="badge badge-warning">$${
+              element.price
+            }</span></h5>
+            <button type="button" class="purchase-btn btn btn-primary float-right">Purchase</button>
+
+        </div>
+    </div>`;
+  }
+  printToDom(newString, 'books');
+};
+
+const getBookPrice = (bookName) => {
+  // storeBooks.find(bookName => bookName.name {
+
+  // })
+  return storeBooks.price;
+};
+
+const getBookIsDiscounted = (bookName) => {
+  return storeBooks.isDiscounted;
+};
+
+const purchaseButtonEvents = () => {
+  const storeBooks = document.getElementsByClassName('purchase-btn');
+  for (let i = 0; i < storeBooks.length; i++) {
+    const element = storeBooks[i];
+    element.addEventListener('click', addToCart);
+  }
+};
+
+const attachEvents = () => {
+  purchaseButtonEvents();
+};
+
+export { loadCards, attachEvents, getBookPrice, getBookIsDiscounted };
