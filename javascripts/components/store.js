@@ -67,7 +67,7 @@ const loadCards = () => {
 // Get Method for the selected book
 const getBookInfo = (bookName) => {
   const bookIndex = storeBooks.findIndex((book) => book.name === bookName);
-  if (bookIndex === 'Undefined') {
+  if (bookIndex === -1) {
     alert(`Could not find a book named ${bookName}`);
   }
   return storeBooks[bookIndex];
