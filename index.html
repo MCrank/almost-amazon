@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-        crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
@@ -23,30 +21,28 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">Home <i class="fas fa-home fa-lg"></i></a>
-                <a class="nav-item nav-link" href="#">Cart <i class="fas fa-shopping-cart fa-lg"></i></a>
+                <a class="nav-item nav-link" href="/">Home <i class="fas fa-home fa-lg"></i></a>
+                <a class="nav-item nav-link" href="#">Cart
+                    <span class="fa-layers fa-fw">
+                        <i class="fas fa-shopping-cart fa-lg"></i>
+                        <span id="counter" class="fa-layers-counter fa-2x" style="background:tomato">0</span>
+                    </span>
+                </a>
+
             </div>
         </div>
     </nav>
 
     <!-- Book Listing -->
-    <div class="continer mx-5 d-flex mt-2" style="display:unset">
+    <div class="continer mx-5 d-flex mt-2" id="book-page">
         <div class="card-group mx-auto" id="books"></div>
     </div>
 
-    <div class="container" id="shopping-cart" style="">
-        <!-- <div class="jumbotron">
-            <h1 class="display-4">Hello, world!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention
-                to
-                featured content or information.</p>
-            <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <button type="button" class="btn btn-primary btn-lg float-left">Discount Available</button>
-            <button type="button" class="btn btn-primary btn-lg float-right">Continue Shopping</button>
-        </div> -->
-    </div>
+    <!-- Cart Listing -->
+    <div class="container mt-3" id="shopping-cart"></div>
 
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" integrity="sha384-kW+oWsYx3YpxvjtZjFXqazFpA7UP/MbiY4jvs+RWZo2+N94PFZ36T6TFkc9O3qoB"
+        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"

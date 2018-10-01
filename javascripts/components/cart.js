@@ -1,4 +1,4 @@
-import { printToDom, calculateDiscount } from '../helpers/util.js';
+import { printToDom, calculateDiscount, showPages, updateCartCounter } from '../helpers/util.js';
 import { getBookInfo } from './store.js';
 
 const cartBook = {
@@ -14,19 +14,22 @@ const addToCart = (selectedBookName) => {
   cartBook.name = selectedBookInfo.name;
   cartBook.price = selectedBookInfo.price;
   cartBook.hasDiscount = selectedBookInfo.isDiscounted;
+  cartBook.discountApplied = false;
   loadCart();
   enableDiscountBtn();
+  updateCartCounter();
 };
 
 const loadCart = () => {
   let newString = '';
-  newString = `<div class="jumbotron">
-    <h4 class="display-4">${cartBook.name}</h4>
+  newString = `<div id="cart" class="jumbotron">
+    <h2 class="">${cartBook.name}</h2>
     <hr class="my-4">
     <h4>Price: $${cartBook.price}</h4>
     <button type="button" id="discount-btn" class="btn btn-primary float-left">Discount Available (10%)</button>
     <button type="button" id="cont-shopping-btn" class="btn btn-primary float-right">Continue Shopping</button>
-</div>`;
+    </div>`;
+  showPages('cart');
   printToDom(newString, 'shopping-cart');
   attachCartEvents();
 };
@@ -53,8 +56,15 @@ const discountBtnEvent = () => {
   });
 };
 
+const contShoppingEvents = () => {
+  document.getElementById('cont-shopping-btn').addEventListener('click', () => {
+    showPages('books');
+  });
+};
+
 const attachCartEvents = () => {
   discountBtnEvent();
+  contShoppingEvents();
 };
 
 export { addToCart };

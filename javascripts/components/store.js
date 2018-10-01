@@ -45,9 +45,9 @@ const loadCards = () => {
   let newString = '';
   for (let i = 0; i < storeBooks.length; i++) {
     const element = storeBooks[i];
-    newString += `<div class="card mx-2 shadow text-white bg-secondary" style="width: 23rem;">
+    newString += `<div class="card mx-2 shadow text-white bg-secondary" style="width: 22rem;">
         <img class="card-img-top" src="${element.imgUrl}" alt="${element.name}">
-        <div class="card-body">
+        <div class="card-body p-2">
             <h5 class="book-name card-title">${element.name}</h5>
             <h6 class="card-text">${element.author}</h6>
             <p class="card-text">${element.description}</p>
